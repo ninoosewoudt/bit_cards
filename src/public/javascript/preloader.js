@@ -11,6 +11,8 @@ class PreLoader {
         PIXI.loader
 
             .add("public/images/fox.png")
+            .add("public/images/menubackground.jpg")
+            .add("public/images/playbackground.jpg")
             .load(this.setup.bind(this));
 
 

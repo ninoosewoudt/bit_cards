@@ -4,27 +4,29 @@
 import MainMenu from './mainMenu';
 import GameScene from './gameScene';
 
+window.app = undefined;
 
 class Game {
-    constructor() {
-        this.app = new PIXI.Application();
-        document.body.appendChild(this.app.view);
 
-        this.app.renderer.view.style.position = "absolute";
-        this.app.renderer.view.style.display = "block";
-        this.app.renderer.autoResize = true;
-        this.app.renderer.resize(window.innerWidth, window.innerHeight);
+    constructor() {
+        app = new PIXI.Application();
+        document.body.appendChild(app.view);
+
+        app.renderer.view.style.position = "absolute";
+        app.renderer.view.style.display = "block";
+        app.renderer.autoResize = true;
+        app.renderer.resize(window.innerWidth, window.innerHeight);
         this.setup();
 
     }
 
     setup() {
         this.menuScene = new MainMenu();
-        this.app.stage.addChild(this.menuScene.scene);
+        app.stage.addChild(this.menuScene.scene);
         this.menuScene.visible = false;
 
         this.gameScene = new GameScene();
-        this.app.stage.addChild(this.gameScene.scene);
+        app.stage.addChild(this.gameScene.scene);
         this.gameScene.visible = false;
 
         //Set the game state
@@ -42,7 +44,7 @@ class Game {
         //Update the current game state
         this.state();
         //Render the stage
-        this.app.renderer.render(this.app.stage);
+        app.renderer.render(app.stage);
         //console.log(this.state);
     }
 
@@ -51,6 +53,13 @@ class Game {
         this.menuScene.visible = true;
         this.gameScene.visible = false;
 
+    }
+
+    static get rendererwidth(){
+        return app.renderer.width;
+    }
+    static get rendererheight(){
+        return app.renderer.height;
     }
 }
 
