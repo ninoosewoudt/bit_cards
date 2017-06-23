@@ -19,7 +19,7 @@ class MainMenu extends Scene {
         this.background.width = Game.rendererwidth;
         this.background.height = Game.rendererheight;
 
-    // add background to stage...
+        // add background to stage...
         this.scene.addChild(this.background);
 
         this.fox = new PIXI.Sprite(

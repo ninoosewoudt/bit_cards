@@ -1,7 +1,5 @@
-class GridCell
-{
-    constructor(container, x, y, width, height)
-    {
+class GridCell {
+    constructor(container, x, y, width, height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -14,3 +12,4 @@ class GridCell
         container.addChild(this.graphics);
     }
 }
+export default GridCell;

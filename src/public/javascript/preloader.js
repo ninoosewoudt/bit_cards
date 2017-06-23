@@ -6,8 +6,6 @@ import Game from './game';
 class PreLoader {
 
     constructor() {
-
-
         PIXI.loader
 
             .add("public/images/fox.png")

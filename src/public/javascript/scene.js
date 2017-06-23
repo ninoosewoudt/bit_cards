@@ -1,10 +1,10 @@
-class Scene{
+class Scene {
 
-    constructor(){
+    constructor() {
         this.container = new PIXI.Container();
     }
 
-    get scene(){
+    get scene() {
         return this.container;
     }
 

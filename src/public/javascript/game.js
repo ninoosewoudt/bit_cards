@@ -9,9 +9,11 @@ window.app = undefined;
 class Game {
 
     constructor() {
+
+
         app = new PIXI.Application();
         document.body.appendChild(app.view);
-
+        app.view.id = "canvas";
         app.renderer.view.style.position = "absolute";
         app.renderer.view.style.display = "block";
         app.renderer.autoResize = true;
@@ -30,12 +32,11 @@ class Game {
         this.gameScene.visible = false;
 
         //Set the game state
-        this.state = this.menu;
+        this.state = this.play();
 
         //Start the game loop
         this.gameLoop();
     }
-
 
 
     gameLoop() {
@@ -55,10 +56,17 @@ class Game {
 
     }
 
-    static get rendererwidth(){
+    play() {
+        this.menuScene.visible = false;
+        this.gameScene.visible = true;
+
+    }
+
+    static get rendererwidth() {
         return app.renderer.width;
     }
-    static get rendererheight(){
+
+    static get rendererheight() {
         return app.renderer.height;
     }
 }
