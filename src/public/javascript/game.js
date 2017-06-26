@@ -32,7 +32,7 @@ class Game {
         this.gameScene.visible = false;
 
         //Set the game state
-        this.state = this.play();
+        this.state = this.play;
 
         //Start the game loop
         this.gameLoop();
