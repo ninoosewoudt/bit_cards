@@ -1,9 +1,10 @@
-let server = require('http').createServer();
-let io = require('socket.io').listen(server);
+var http = require('http');
 var express = require('express');
+var app = express();
+var server = http.createServer(app);
+let io = require('socket.io')(server);
 let port = 80;
 let users = [];
-
 get('/', function (req, res) {
     res.render('index');
 });
