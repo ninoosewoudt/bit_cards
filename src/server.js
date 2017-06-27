@@ -6,7 +6,7 @@ let io = require('socket.io')(server);
 let port = 80;
 let users = [];
 
-app.get('/', function (req, res) {
+server.get('/', function (req, res) {
     res.render('index');
 });
 
