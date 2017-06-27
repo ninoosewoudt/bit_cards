@@ -1,7 +1,14 @@
 let server = require('http').createServer();
 let io = require('socket.io').listen(server);
+var express = require('express');
 let port = 3000;
 let users = [];
+
+get('/', function (req, res) {
+    res.render('index');
+});
+
+
 io.on('connection', (socket) => {
     console.log("a connection");
     if (users.length > 2)
