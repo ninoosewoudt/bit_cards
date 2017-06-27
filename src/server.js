@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var server = http.createServer(app);
 let io = require('socket.io')(server);
-let port = 80;
+let port = 3000;
 let users = [];
 
 app.get('/', function (req, res) {
