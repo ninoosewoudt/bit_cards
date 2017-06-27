@@ -1,5 +1,7 @@
+import SendCard from './sendCard';
 class Hand {
-    constructor(grid, deck, player) {
+    constructor(grid, deck, player, ioConnection) {
+        this.io = ioConnection;
         this.player = player;
         if (player === 2)
             this.playOfset = 5;
@@ -19,16 +21,14 @@ class Hand {
                         clickY < this.grid.grid[i][this.playOfset].y + this.grid.grid[i][this.playOfset].height) {
                         for (let j = 0; j < 3; j++) {
                             if (this.hand[j].active) {
-                                if (!grid.playCard(this.hand[j], this.playOfset, i))
+                                if (!grid.checkIfCardCanBePlayed(this.playOfset, i))
                                     return;
-                                this.hand[j].index = this.grid.playedCards.length;
-                                this.grid.playedCards.push(this.hand[j]);
                                 console.log("card played");
-                                this.hand[j].movingLeft = this.playOfset !== 0;
+                                this.hand[j].setGridPosition(this.playOfset, i);
                                 this.hand[j].active = false;
-                                this.grid.takeTurn(this);
-                                document.dispatchEvent(new Event("turn"));
-                                this.emptyHand(j);
+                                this.hand[j].movingLeft = this.playOfset !== 0;
+                                this.io.emit("turn", new SendCard(this.hand[j]));
+                                this.emptyHand();
                                 return;
                             }
                         }
@@ -52,10 +52,10 @@ class Hand {
             this.hand[i].setDrawPosition(40 + 250 * i, 500);
     }
 
-    emptyHand(cardPlayed) {
-        for (let i = 0; i < 3; i++) {
-            if (cardPlayed === i)
-                continue;
+    emptyHand() {
+        for (let i = 0; i < 3; i++)
+        {
+            console.log("destroying hand");
             this.hand[i].image.visible = false;
         }
         this.hand = undefined;

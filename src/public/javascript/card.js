@@ -1,9 +1,11 @@
+
 class Card {
     constructor(container, imagePath, x, y, health, damage, movement) {
         this.image = PIXI.Sprite.from(imagePath);
         this.image.renderable = false;
         this.image.x = x;
         this.image.y = y;
+        this.imagePath = imagePath;
         this.movingLeft = false;
         this.health = health;
         this.damage = damage;

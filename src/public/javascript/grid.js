@@ -34,19 +34,22 @@ class Grid {
         this.p2HealthText.x = (horizontalCells) * 125 + horizontalOffset / 2 + 80;
         this.container.addChild(this.p2HealthText);
     }
-
-    playCard(card, gridPositionX, gridPositionY) {
+    checkIfCardCanBePlayed(gridPositionX, gridPositionY)
+    {
         if (this.grid[gridPositionY][gridPositionX].card !== undefined)
             return false;
+        return true;
+    }
+    playCard(card, gridPositionX, gridPositionY) {
         card.setGridPosition(gridPositionX, gridPositionY);
         this.grid[gridPositionY][gridPositionX].card = card;
         card.setDrawPosition(this.grid[gridPositionY][gridPositionX].x, this.grid[gridPositionY][gridPositionX].y);
         card.setScaling(0.5, 0.5);
-        return true;
     }
 
-    takeTurn(hand) {
-        this.move(hand.player);
+    takeTurn(player)
+    {
+        this.move(player);
         this.attack();
         this.checkForCasualties();
     }
