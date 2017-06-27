@@ -5,7 +5,8 @@ var server = http.createServer(app);
 let io = require('socket.io')(server);
 let port = 80;
 let users = [];
-get('/', function (req, res) {
+
+app.get('/', function (req, res) {
     res.render('index');
 });
 
@@ -19,7 +20,7 @@ io.on('connection', (socket) => {
     socket.on("turn", (card) => {
         io.sockets.emit("turn", card);
         //for (let i = 0; i < users.length; i++)
-         //   users[i].emit("turn", card);
+        //   users[i].emit("turn", card);
     });
     socket.on('disconnect', () => {
         console.log('client disconnect');
