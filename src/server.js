@@ -10,7 +10,7 @@ let users = [];
 
 app.get('/', function (req, res) {
     console.log("yooo");
-    res.sendfile('index.html');
+    res.sendFile('index.html');
 });
 
 
