@@ -6,9 +6,11 @@ let io = require('socket.io')(server);
 let port = process.env.PORT || 80;
 let users = [];
 
+
+
 app.get('/', function (req, res) {
     console.log("yooo");
-    res.render('index.html');
+    res.sendfile('index.html');
 });
 
 
