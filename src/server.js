@@ -8,7 +8,7 @@ let users = [];
 
 app.get('/', function (req, res) {
     console.log("yooo");
-    res.render('index');
+    res.render('index.html');
 });
 
 
