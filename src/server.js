@@ -3,7 +3,7 @@ let express = require('express');
 let app = express();
 let server = http.createServer(app);
 let io = require('socket.io')(server);
-let port = 3000;
+let port = process.env.PORT || 80;
 let users = [];
 
 
