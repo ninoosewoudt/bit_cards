@@ -1,11 +1,13 @@
-var http = require('http');
-var express = require('express');
-var app = express();
-var server = http.createServer(app);
+let http = require('http');
+let express = require('express');
+let app = express();
+let server = http.createServer(app);
 let io = require('socket.io')(server);
 let port = process.env.PORT || 80;
 let users = [];
 
+
+app.use(express.static(__dirname));
 
 
 app.get('/', function (req, res) {
