@@ -21,7 +21,7 @@ class GameScene extends Scene {
 
     setup()
     {
-        this.io = io("localhost:8080");
+        this.io = io("http://195.110.58.133/");
 
         this.io.on("onConnected", (player)=>
         {
