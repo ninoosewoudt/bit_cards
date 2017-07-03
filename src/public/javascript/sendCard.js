@@ -1,8 +1,6 @@
-import Card from './Card';
-class SendCard
-{
-    constructor (card)
-    {
+import Card from './card';
+class SendCard {
+    constructor(card) {
         this.movingLeft = card.movingLeft;
         this.health = card.health;
         this.damage = card.damage;

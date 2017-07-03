@@ -1,6 +1,6 @@
 let server = require('http').createServer();
 let io = require('socket.io').listen(server);
-let port = 3000;
+let port = 443;
 let users = [];
 io.on('connection', (socket) => {
     console.log("a connection");
@@ -11,7 +11,7 @@ io.on('connection', (socket) => {
     socket.on("turn", (card) => {
         io.sockets.emit("turn", card);
         //for (let i = 0; i < users.length; i++)
-         //   users[i].emit("turn", card);
+        //   users[i].emit("turn", card);
     });
     socket.on('disconnect', () => {
         console.log('client disconnect');
@@ -28,4 +28,3 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
     console.log('listening on' + port);
 });
-
