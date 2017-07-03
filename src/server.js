@@ -1,21 +1,7 @@
-let http = require('http');
-let express = require('express');
-let app = express();
-let server = http.createServer(app);
-let io = require('socket.io')(server);
-let port = process.env.PORT || 80;
+let server = require('http').createServer();
+let io = require('socket.io').listen(server);
+let port = 443;
 let users = [];
-
-
-app.use(express.static(__dirname));
-
-
-app.get('/', function (req, res) {
-    console.log("yooo");
-    res.sendFile('index.html');
-});
-
-
 io.on('connection', (socket) => {
     console.log("a connection");
     if (users.length > 2)
@@ -42,4 +28,3 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
     console.log('listening on' + port);
 });
-

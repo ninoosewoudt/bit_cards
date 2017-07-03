@@ -19,12 +19,9 @@ class GameScene extends Scene {
     }
 
 
-    setup()
-    {
-        this.io = io("http://195.110.58.133/");
-
-        this.io.on("onConnected", (player)=>
-        {
+    setup() {
+        this.io = io('http://ninow.nl:443');
+        this.io.on("onConnected", (player) => {
             console.log(player);
             this.hand = new Hand(grid, deck1, player + 1, this.io);
         });
@@ -43,14 +40,12 @@ class GameScene extends Scene {
         for (let i = 0; i < 54; i++) {
             deck1.addCards(new Card(this.scene, "public/images/waifuu.png", 0, 0, 1, 1, 1));
         }
-        this.io.on("start", ()=>
-        {
+        this.io.on("start", () => {
             console.log(this.hand);
             if (this.hand.player === 1)
                 this.hand.takeTurn();
         });
-        this.io.on("turn", (data)=>
-        {
+        this.io.on("turn", (data) => {
             console.log(data, "card received");
             let card = new Card(this.scene, data.imagePath, 0, 0, data.health, data.damage, data.movement);
             card.index = grid.playedCards.length;
@@ -58,9 +53,8 @@ class GameScene extends Scene {
             grid.playedCards.push(card);
             grid.playCard(card, data.gridX, data.gridY);
             grid.takeTurn(data.movingLeft ? 2 : 1, "player");
-            console.log("statement is  " ,(data.movingLeft ? 1 : 2) == this.hand.player);
-            if ((data.movingLeft ? 1 : 2) == this.hand.player)
-            {
+            console.log("statement is  ", (data.movingLeft ? 1 : 2) == this.hand.player);
+            if ((data.movingLeft ? 1 : 2) == this.hand.player) {
                 console.log("my turn");
                 this.hand.takeTurn();
             }
