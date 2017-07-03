@@ -36,9 +36,18 @@ class GameScene extends Scene {
 
         let grid = new Grid(6, 3, 100, 20);
         this.scene.addChild(grid.container);
+        let cards = [];
+        cards.push("public/images/sebas.png");
+        cards.push("public/images/attackchopper.png");
+        cards.push("public/images/karbonkel.png");
+        cards.push("public/images/kast.png");
+        cards.push("public/images/shenkie.png");
+        cards.push("public/images/test.png");
+        cards.push("public/images/waifuu.png");
+
         let deck1 = new Deck();
         for (let i = 0; i < 54; i++) {
-            deck1.addCards(new Card(this.scene, "public/images/waifuu.png", 0, 0, 1, 1, 1));
+            deck1.addCards(new Card(this.scene, cards[Math.random() * cars.length], 0, 0, Math.random() * 3, Math.random() * 3, math.random * 2));
         }
         this.io.on("start", () => {
             console.log(this.hand);
