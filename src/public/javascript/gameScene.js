@@ -47,7 +47,7 @@ class GameScene extends Scene {
 
         let deck1 = new Deck();
         for (let i = 0; i < 54; i++) {
-            deck1.addCards(new Card(this.scene, cards[Math.random() * cards.length], 0, 0, Math.random() * 3, Math.random() * 3, Math.random() * 2));
+            deck1.addCards(new Card(this.scene, cards[Math.floor(Math.random() * cards.length)], 0, 0, Math.ceil(Math.random() * 3), Math.ceil(Math.random() * 3), Math.ceil(Math.random() * 2)));
         }
         this.io.on("start", () => {
             console.log(this.hand);
